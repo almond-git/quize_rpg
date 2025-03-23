@@ -1,0 +1,164 @@
+[
+  {
+    "id": 1,
+    "name": "지식의 마을",
+    "description": "퀴즈 여행의 시작점, 기본적인 지식을 시험하는 지역입니다.",
+    "unlockLevel": 1,
+    "categories": ["일반 지식"],
+    "difficulty": "쉬움",
+    "backgroundImage": "assets/images/regions/knowledge_village.png",
+    "availableQuests": [1, 2, 6],
+    "rewards": {
+      "firstClear": {
+        "exp": 100,
+        "coins": 50,
+        "items": [
+          {
+            "itemId": 1,
+            "quantity": 1
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": 2,
+    "name": "숫자의 광장",
+    "description": "수학적 지식으로 가득 찬 광장입니다.",
+    "unlockLevel": 2,
+    "categories": ["수학"],
+    "difficulty": "보통",
+    "backgroundImage": "assets/images/regions/numbers_square.png",
+    "availableQuests": [1, 2, 3, 5],
+    "rewards": {
+      "firstClear": {
+        "exp": 150,
+        "coins": 75,
+        "items": [
+          {
+            "itemId": 2,
+            "quantity": 1
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": 3,
+    "name": "실험 연구소",
+    "description": "과학적 지식을 탐구하는 신비로운 연구소입니다.",
+    "unlockLevel": 4,
+    "categories": ["과학"],
+    "difficulty": "보통",
+    "backgroundImage": "assets/images/regions/science_lab.png",
+    "availableQuests": [1, 2, 3, 4],
+    "rewards": {
+      "firstClear": {
+        "exp": 200,
+        "coins": 100,
+        "items": [
+          {
+            "itemId": 3,
+            "quantity": 1
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": 4,
+    "name": "세계 탐험 센터",
+    "description": "세계 각국의 지리와 문화를 배울 수 있는 다문화 공간입니다.",
+    "unlockLevel": 6,
+    "categories": ["지리"],
+    "difficulty": "어려움",
+    "backgroundImage": "assets/images/regions/world_exploration.png",
+    "availableQuests": [1, 2, 3, 4, 5],
+    "rewards": {
+      "firstClear": {
+        "exp": 250,
+        "coins": 125,
+        "items": [
+          {
+            "itemId": 4,
+            "quantity": 1
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": 5,
+    "name": "코드 타워",
+    "description": "프로그래밍 지식으로 가득 찬 미래적인 타워입니다.",
+    "unlockLevel": 8,
+    "categories": ["프로그래밍"],
+    "difficulty": "어려움",
+    "backgroundImage": "assets/images/regions/code_tower.png",
+    "availableQuests": [1, 2, 3, 4, 7],
+    "rewards": {
+      "firstClear": {
+        "exp": 300,
+        "coins": 150,
+        "items": [
+          {
+            "itemId": 5,
+            "quantity": 1
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": 6,
+    "name": "역사의 회랑",
+    "description": "인류 역사의 중요한 순간들을 경험할 수 있는 시간의 통로입니다.",
+    "unlockLevel": 9,
+    "categories": ["역사"],
+    "difficulty": "어려움",
+    "backgroundImage": "assets/images/regions/history_hall.png",
+    "availableQuests": [1, 2, 3, 4, 7],
+    "rewards": {
+      "firstClear": {
+        "exp": 350,
+        "coins": 175,
+        "items": [
+          {
+            "itemId": 6,
+            "quantity": 1
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": 7,
+    "name": "지식의 성소",
+    "description": "모든 지식의 정수가 모인 신비로운 최종 지역입니다.",
+    "unlockLevel": 10,
+    "categories": ["일반 지식", "수학", "과학", "지리", "프로그래밍", "역사", "생물학"],
+    "difficulty": "전문가",
+    "backgroundImage": "assets/images/regions/knowledge_sanctuary.png",
+    "availableQuests": [1, 2, 3, 4, 5, 6, 7],
+    "rewards": {
+      "firstClear": {
+        "exp": 500,
+        "coins": 250,
+        "items": [
+          {
+            "itemId": 1,
+            "quantity": 1
+          },
+          {
+            "itemId": 3,
+            "quantity": 1
+          },
+          {
+            "itemId": 4,
+            "quantity": 1
+          }
+        ]
+      }
+    }
+  }
+] 

@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "question": "대한민국의 수도는?",
+    "options": ["서울", "부산", "인천", "대구"],
+    "correctOptionIndex": 0,
+    "difficulty": 1,
+    "category": "일반상식",
+    "experienceReward": 10,
+    "experiencePenalty": 5
+  },
+  {
+    "id": 2,
+    "question": "1 + 1 = ?",
+    "options": ["1", "2", "3", "4"],
+    "correctOptionIndex": 1,
+    "difficulty": 1,
+    "category": "수학",
+    "experienceReward": 10,
+    "experiencePenalty": 5
+  },
+  {
+    "id": 3,
+    "question": "물의 화학식은?",
+    "options": ["CO2", "H2O", "O2", "N2"],
+    "correctOptionIndex": 1,
+    "difficulty": 2,
+    "category": "과학",
+    "experienceReward": 20,
+    "experiencePenalty": 10
+  },
+  {
+    "id": 4,
+    "question": "세계에서 가장 넓은 대륙은?",
+    "options": ["아시아", "아프리카", "유럽", "남아메리카"],
+    "correctOptionIndex": 0,
+    "difficulty": 2,
+    "category": "지리",
+    "experienceReward": 20,
+    "experiencePenalty": 10
+  },
+  {
+    "id": 5,
+    "question": "다음 중 프로그래밍 언어가 아닌 것은?",
+    "options": ["Java", "Python", "Banana", "JavaScript"],
+    "correctOptionIndex": 2,
+    "difficulty": 3,
+    "category": "프로그래밍",
+    "experienceReward": 30,
+    "experiencePenalty": 15
+  },
+  {
+    "id": 6,
+    "question": "인류 최초로 달에 착륙한 우주비행사는?",
+    "options": ["닐 암스트롱", "버즈 올드린", "유리 가가린", "존 글렌"],
+    "correctOptionIndex": 0,
+    "difficulty": 2,
+    "category": "역사",
+    "experienceReward": 20,
+    "experiencePenalty": 10
+  },
+  {
+    "id": 7,
+    "question": "다음 중 포유류가 아닌 것은?",
+    "options": ["고래", "박쥐", "펭귄", "코끼리"],
+    "correctOptionIndex": 2,
+    "difficulty": 2,
+    "category": "생물학",
+    "experienceReward": 20,
+    "experiencePenalty": 10
+  },
+  {
+    "id": 8,
+    "question": "HTML은 무엇의 약자인가?",
+    "options": ["Hyper Text Markup Language", "High Tech Modern Language", "Hyper Transfer Method Language", "Home Tool Markup Language"],
+    "correctOptionIndex": 0,
+    "difficulty": 2,
+    "category": "프로그래밍",
+    "experienceReward": 20,
+    "experiencePenalty": 10
+  },
+  {
+    "id": 9,
+    "question": "세계에서 가장 높은 산은?",
+    "options": ["에베레스트", "K2", "킬리만자로", "매킨리"],
+    "correctOptionIndex": 0,
+    "difficulty": 1,
+    "category": "지리",
+    "experienceReward": 10,
+    "experiencePenalty": 5
+  },
+  {
+    "id": 10,
+    "question": "태양계에서 가장 큰 행성은?",
+    "options": ["지구", "목성", "토성", "화성"],
+    "correctOptionIndex": 1,
+    "difficulty": 1,
+    "category": "과학",
+    "experienceReward": 10,
+    "experiencePenalty": 5
+  }
+] 

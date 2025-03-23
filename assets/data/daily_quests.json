@@ -1,0 +1,137 @@
+[
+  {
+    "id": 1,
+    "title": "일일 도전",
+    "description": "오늘 5개의 퀴즈 완료하기",
+    "condition": {
+      "type": "dailyQuizzes",
+      "value": 5
+    },
+    "rewards": {
+      "exp": 100,
+      "coins": 50,
+      "items": []
+    },
+    "iconPath": "assets/images/quests/daily_challenge.png"
+  },
+  {
+    "id": 2,
+    "title": "정답 사냥꾼",
+    "description": "오늘 10개의 정답 맞히기",
+    "condition": {
+      "type": "dailyCorrect",
+      "value": 10
+    },
+    "rewards": {
+      "exp": 150,
+      "coins": 75,
+      "items": [
+        {
+          "itemId": 1,
+          "quantity": 1
+        }
+      ]
+    },
+    "iconPath": "assets/images/quests/answer_hunter.png"
+  },
+  {
+    "id": 3,
+    "title": "카테고리 탐험가",
+    "description": "오늘 3개 이상의 다른 카테고리 퀴즈 풀기",
+    "condition": {
+      "type": "dailyCategories",
+      "value": 3
+    },
+    "rewards": {
+      "exp": 120,
+      "coins": 60,
+      "items": [
+        {
+          "itemId": 6,
+          "quantity": 1
+        }
+      ]
+    },
+    "iconPath": "assets/images/quests/category_explorer.png"
+  },
+  {
+    "id": 4,
+    "title": "도전 정신",
+    "description": "오늘 어려운 난이도 퀴즈 3개 풀기",
+    "condition": {
+      "type": "dailyDifficult",
+      "value": 3
+    },
+    "rewards": {
+      "exp": 200,
+      "coins": 100,
+      "items": [
+        {
+          "itemId": 4,
+          "quantity": 1
+        }
+      ]
+    },
+    "iconPath": "assets/images/quests/challenger.png"
+  },
+  {
+    "id": 5,
+    "title": "스피드 스타",
+    "description": "오늘 15초 이내에 5개 문제 맞히기",
+    "condition": {
+      "type": "dailyQuickAnswers",
+      "value": 5
+    },
+    "rewards": {
+      "exp": 150,
+      "coins": 75,
+      "items": [
+        {
+          "itemId": 2,
+          "quantity": 1
+        }
+      ]
+    },
+    "iconPath": "assets/images/quests/speed_star.png"
+  },
+  {
+    "id": 6,
+    "title": "연속 도전자",
+    "description": "오늘 3일 연속 접속하기",
+    "condition": {
+      "type": "loginStreak",
+      "value": 3
+    },
+    "rewards": {
+      "exp": 100,
+      "coins": 150,
+      "items": [
+        {
+          "itemId": 3,
+          "quantity": 1
+        }
+      ]
+    },
+    "iconPath": "assets/images/quests/streak_challenger.png"
+  },
+  {
+    "id": 7,
+    "title": "아이템 사용자",
+    "description": "오늘 2개의 아이템 사용하기",
+    "condition": {
+      "type": "useItems",
+      "value": 2
+    },
+    "rewards": {
+      "exp": 80,
+      "coins": 100,
+      "items": [
+        {
+          "itemId": 5,
+          "quantity": 1
+        }
+      ]
+    },
+    "iconPath": "assets/images/quests/item_user.png"
+  }
+] 

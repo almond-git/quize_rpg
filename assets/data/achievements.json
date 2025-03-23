@@ -1,0 +1,157 @@
+[
+  {
+    "id": 1,
+    "title": "첫 발걸음",
+    "description": "첫 퀴즈 완료하기",
+    "category": "기본",
+    "condition": {
+      "type": "quizCompleted",
+      "value": 1
+    },
+    "rewards": {
+      "exp": 50,
+      "items": []
+    },
+    "iconPath": "assets/images/achievements/first_step.png"
+  },
+  {
+    "id": 2,
+    "title": "지식의 문",
+    "description": "10개의 퀴즈 완료하기",
+    "category": "기본",
+    "condition": {
+      "type": "quizCompleted",
+      "value": 10
+    },
+    "rewards": {
+      "exp": 100,
+      "items": [
+        {
+          "itemId": 1,
+          "quantity": 2
+        }
+      ]
+    },
+    "iconPath": "assets/images/achievements/knowledge_gate.png"
+  },
+  {
+    "id": 3,
+    "title": "연속 정답",
+    "description": "5문제 연속으로 맞히기",
+    "category": "도전",
+    "condition": {
+      "type": "correctStreak",
+      "value": 5
+    },
+    "rewards": {
+      "exp": 150,
+      "items": [
+        {
+          "itemId": 3,
+          "quantity": 1
+        }
+      ]
+    },
+    "iconPath": "assets/images/achievements/streak.png"
+  },
+  {
+    "id": 4,
+    "title": "속도의 달인",
+    "description": "10초 이내에 문제 맞히기",
+    "category": "속도",
+    "condition": {
+      "type": "answerTime",
+      "value": 10
+    },
+    "rewards": {
+      "exp": 100,
+      "items": [
+        {
+          "itemId": 2,
+          "quantity": 1
+        }
+      ]
+    },
+    "iconPath": "assets/images/achievements/speed_master.png"
+  },
+  {
+    "id": 5,
+    "title": "전문가의 길",
+    "description": "어려운 난이도 문제 10개 맞히기",
+    "category": "난이도",
+    "condition": {
+      "type": "difficultCorrect",
+      "value": 10
+    },
+    "rewards": {
+      "exp": 200,
+      "items": [
+        {
+          "itemId": 4,
+          "quantity": 1
+        }
+      ]
+    },
+    "iconPath": "assets/images/achievements/expert_path.png"
+  },
+  {
+    "id": 6,
+    "title": "수집가",
+    "description": "모든 종류의 아이템 1개 이상 획득하기",
+    "category": "아이템",
+    "condition": {
+      "type": "uniqueItems",
+      "value": 6
+    },
+    "rewards": {
+      "exp": 150,
+      "items": [
+        {
+          "itemId": 5,
+          "quantity": 1
+        }
+      ]
+    },
+    "iconPath": "assets/images/achievements/collector.png"
+  },
+  {
+    "id": 7,
+    "title": "지식의 대가",
+    "description": "모든 카테고리에서 3개 이상의 문제 맞히기",
+    "category": "다양성",
+    "condition": {
+      "type": "allCategories",
+      "value": 3
+    },
+    "rewards": {
+      "exp": 250,
+      "items": [
+        {
+          "itemId": 6,
+          "quantity": 1
+        }
+      ]
+    },
+    "iconPath": "assets/images/achievements/knowledge_master.png"
+  },
+  {
+    "id": 8,
+    "title": "퀴즈 머신",
+    "description": "하루에 20개 이상의 퀴즈 풀기",
+    "category": "일일",
+    "condition": {
+      "type": "dailyQuizzes",
+      "value": 20
+    },
+    "rewards": {
+      "exp": 300,
+      "items": [
+        {
+          "itemId": 3,
+          "quantity": 2
+        }
+      ]
+    },
+    "iconPath": "assets/images/achievements/quiz_machine.png"
+  }
+] 

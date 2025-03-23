@@ -1,0 +1,202 @@
+{
+  "gameTitle": "퀴즈 RPG: 지식의 모험",
+  "version": "1.0.0",
+  "defaultSettings": {
+    "soundEnabled": true,
+    "musicVolume": 0.7,
+    "sfxVolume": 0.8,
+    "vibrationEnabled": true,
+    "notificationsEnabled": true,
+    "language": "ko",
+    "darkMode": false,
+    "quizTimers": {
+      "easy": 60,
+      "medium": 45,
+      "hard": 30,
+      "expert": 20
+    },
+    "dailyRewards": {
+      "day1": {
+        "coins": 50,
+        "items": []
+      },
+      "day2": {
+        "coins": 100,
+        "items": []
+      },
+      "day3": {
+        "coins": 150,
+        "items": [
+          {
+            "itemId": 1,
+            "quantity": 1
+          }
+        ]
+      },
+      "day4": {
+        "coins": 200,
+        "items": []
+      },
+      "day5": {
+        "coins": 250,
+        "items": [
+          {
+            "itemId": 2,
+            "quantity": 1
+          }
+        ]
+      },
+      "day6": {
+        "coins": 300,
+        "items": []
+      },
+      "day7": {
+        "coins": 500,
+        "items": [
+          {
+            "itemId": 3,
+            "quantity": 1
+          },
+          {
+            "itemId": 4,
+            "quantity": 1
+          }
+        ]
+      }
+    }
+  },
+  "monetization": {
+    "adRewards": {
+      "coins": 50,
+      "items": [
+        {
+          "itemId": 1,
+          "chance": 0.3
+        },
+        {
+          "itemId": 2,
+          "chance": 0.2
+        }
+      ]
+    },
+    "inAppPurchases": {
+      "coinPacks": [
+        {
+          "id": "small_coins",
+          "name": "작은 코인 팩",
+          "coins": 500,
+          "price": "₩1,000",
+          "bonus": 0
+        },
+        {
+          "id": "medium_coins",
+          "name": "중간 코인 팩",
+          "coins": 1200,
+          "price": "₩2,000",
+          "bonus": 200
+        },
+        {
+          "id": "large_coins",
+          "name": "대형 코인 팩",
+          "coins": 3000,
+          "price": "₩5,000",
+          "bonus": 500
+        }
+      ],
+      "itemPacks": [
+        {
+          "id": "starter_pack",
+          "name": "초보자 팩",
+          "price": "₩3,000",
+          "items": [
+            {
+              "itemId": 1,
+              "quantity": 3
+            },
+            {
+              "itemId": 2,
+              "quantity": 3
+            },
+            {
+              "itemId": 4,
+              "quantity": 1
+            }
+          ],
+          "coins": 1000
+        },
+        {
+          "id": "advanced_pack",
+          "name": "고급 아이템 팩",
+          "price": "₩8,000",
+          "items": [
+            {
+              "itemId": 3,
+              "quantity": 3
+            },
+            {
+              "itemId": 4,
+              "quantity": 2
+            },
+            {
+              "itemId": 5,
+              "quantity": 2
+            },
+            {
+              "itemId": 6,
+              "quantity": 1
+            }
+          ],
+          "coins": 2500
+        }
+      ]
+    }
+  },
+  "playerDefaults": {
+    "startingLevel": 1,
+    "startingExp": 0,
+    "startingCoins": 100,
+    "startingItems": [
+      {
+        "itemId": 1,
+        "quantity": 1
+      }
+    ],
+    "maxInventorySlots": 20,
+    "maxItemSlots": 3
+  },
+  "gameRules": {
+    "streakBonuses": {
+      "3": {
+        "expMultiplier": 1.1,
+        "coinBonus": 10
+      },
+      "5": {
+        "expMultiplier": 1.2,
+        "coinBonus": 20
+      },
+      "10": {
+        "expMultiplier": 1.5,
+        "coinBonus": 50
+      }
+    },
+    "timeBonus": {
+      "thresholds": [
+        {
+          "secondsLeft": 30,
+          "expBonus": 10,
+          "coinBonus": 5
+        },
+        {
+          "secondsLeft": 20,
+          "expBonus": 20,
+          "coinBonus": 10
+        },
+        {
+          "secondsLeft": 10,
+          "expBonus": 30,
+          "coinBonus": 15
+        }
+      ]
+    }
+  }
+} 

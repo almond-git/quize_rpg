@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "name": "힌트 카드",
+    "description": "객관식 문제에서 2개의 오답을 제거합니다.",
+    "iconPath": "assets/images/items/hint_card.png",
+    "type": "hintCard",
+    "value": 2,
+    "price": 100
+  },
+  {
+    "id": 2,
+    "name": "시간 연장",
+    "description": "퀴즈 시간을 30초 추가합니다.",
+    "iconPath": "assets/images/items/time_extension.png",
+    "type": "timeExtension",
+    "value": 30,
+    "price": 150
+  },
+  {
+    "id": 3,
+    "name": "경험치 부스터",
+    "description": "다음 퀴즈에서 획득하는 경험치가 2배가 됩니다.",
+    "iconPath": "assets/images/items/exp_booster.png",
+    "type": "expBooster",
+    "value": 2,
+    "price": 200
+  },
+  {
+    "id": 4,
+    "name": "방어막",
+    "description": "한 번의 오답을 무시하고 경험치 감소를 방지합니다.",
+    "iconPath": "assets/images/items/shield.png",
+    "type": "shield",
+    "value": 1,
+    "price": 250
+  },
+  {
+    "id": 5,
+    "name": "재도전 기회",
+    "description": "틀린 문제를 바로 다시 풀 수 있는 기회를 제공합니다.",
+    "iconPath": "assets/images/items/retry_chance.png",
+    "type": "retryChance",
+    "value": 1,
+    "price": 200
+  },
+  {
+    "id": 6,
+    "name": "주제 변경",
+    "description": "현재 주제를 다른 주제로 변경합니다.",
+    "iconPath": "assets/images/items/topic_change.png",
+    "type": "topicChange",
+    "value": 1,
+    "price": 150
+  }
+] 

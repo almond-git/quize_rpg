@@ -1,0 +1,62 @@
+[
+  {
+    "level": 1,
+    "expRequired": 0,
+    "title": "초보 퀴즈왕",
+    "unlocks": ["일반 지식 퀴즈"]
+  },
+  {
+    "level": 2,
+    "expRequired": 100,
+    "title": "견습 퀴즈왕",
+    "unlocks": ["수학 퀴즈"]
+  },
+  {
+    "level": 3,
+    "expRequired": 250,
+    "title": "유망한 퀴즈왕",
+    "unlocks": ["아이템 슬롯 1개 추가"]
+  },
+  {
+    "level": 4,
+    "expRequired": 500,
+    "title": "숙련된 퀴즈왕",
+    "unlocks": ["과학 퀴즈"]
+  },
+  {
+    "level": 5,
+    "expRequired": 800,
+    "title": "전문 퀴즈왕",
+    "unlocks": ["일일 보상 강화"]
+  },
+  {
+    "level": 6,
+    "expRequired": 1200,
+    "title": "마스터 퀴즈왕",
+    "unlocks": ["지리 퀴즈"]
+  },
+  {
+    "level": 7,
+    "expRequired": 1700,
+    "title": "베테랑 퀴즈왕",
+    "unlocks": ["아이템 슬롯 1개 추가"]
+  },
+  {
+    "level": 8,
+    "expRequired": 2300,
+    "title": "스타 퀴즈왕",
+    "unlocks": ["프로그래밍 퀴즈"]
+  },
+  {
+    "level": 9,
+    "expRequired": 3000,
+    "title": "엘리트 퀴즈왕",
+    "unlocks": ["퀴즈 난이도 '전문가' 해금"]
+  },
+  {
+    "level": 10,
+    "expRequired": 4000,
+    "title": "레전드 퀴즈왕",
+    "unlocks": ["특별 칭호 및 모든 카테고리 해금"]
+  }
+] 
