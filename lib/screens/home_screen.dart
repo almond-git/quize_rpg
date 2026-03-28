@@ -521,6 +521,8 @@ class _HomeScreenState extends State<HomeScreen> {
         return Icons.flag;
       case '역사':
         return Icons.history_edu;
+      case '한국사':
+        return Icons.temple_buddhist;
       case '과학':
         return Icons.science;
       case '문학':

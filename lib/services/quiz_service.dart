@@ -57,6 +57,7 @@ class QuizService {
           await _loadCategoryQuizzes('gugudan'); // 구구단 퀴즈
           await _loadCategoryQuizzes('capital'); // 나라 수도 퀴즈
           await _loadCategoryQuizzes('flag'); // 나라 국기 퀴즈
+          await _loadCategoryQuizzes('history/korean_history'); // 한국사 퀴즈
 
           // 퀴즈가 여전히 비어있으면 기본 파일 로드
           if (_quizzes.isEmpty) {
