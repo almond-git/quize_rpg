@@ -1,24 +1,32 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:quiz_rpg/providers/player_provider.dart';
 import 'package:quiz_rpg/providers/quiz_file_provider.dart';
 import 'package:quiz_rpg/screens/home_screen.dart';
 import 'package:quiz_rpg/services/quiz_service.dart';
 import 'package:quiz_rpg/services/sound_service.dart';
+import 'package:quiz_rpg/services/preference_service.dart';
 
-void main() {
+// 앱 전역에서 사용할 키 (웹 환경에서 포커스 이슈 해결)
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  
+
   // 웹 환경에서의 초기화
   if (kIsWeb) {
     debugPrint('웹 환경에서 실행 중입니다. 로컬 데이터베이스는 사용할 수 없습니다.');
+
+    // 웹에서의 포인터 이벤트 문제 수정
+    SystemChannels.textInput.invokeMethod('TextInput.clearClient');
   }
-  
+
   // 사운드 서비스 초기화
-  final _ = soundService;
-  
+  await initSoundService();
+
   // 사운드 파일 확인
   debugPrint('사운드 파일 테스트 - 다음 파일들이 assets/sounds/ 디렉토리에 존재해야 합니다:');
   debugPrint('- button_click.mp3');
@@ -27,17 +35,22 @@ void main() {
   debugPrint('- level_up.mp3');
   debugPrint('- level_down.mp3');
   debugPrint('- item_use.mp3');
-  
+  debugPrint('- time_low.wav');
+  debugPrint('- game_win.mp3');
+
   // 웹에서도 사운드가 재생되도록 설정
   debugPrint('웹 환경에서도 사운드가 재생되도록 설정되었습니다.');
-  
-  // 앱 시작 시 효과음 재생 테스트 (3초 후)
-  Timer(const Duration(seconds: 3), () {
-    soundService.playSound(SoundType.buttonClick);
-    debugPrint('시작 효과음 재생 시도 - buttonClick');
-  });
-  
-  runApp(const MyApp());
+
+  // PreferenceService 초기화
+  final preferenceService = PreferenceService();
+  await preferenceService.init();
+
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => PlayerProvider(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatefulWidget {
@@ -49,11 +62,11 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   bool _showSplash = true;
-  
+
   @override
   void initState() {
     super.initState();
-    
+
     // 스플래시 화면 표시 시간 (3초)
     Future.delayed(const Duration(seconds: 3), () {
       if (mounted) {
@@ -71,31 +84,30 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-          create: (_) {
-            final playerProvider = PlayerProvider();
-            // 앱 시작 시 초기화 (플레이어 선택 다이얼로그를 위해)
-            WidgetsBinding.instance.addPostFrameCallback((_) {
-              playerProvider.initialize();
-            });
-            return playerProvider;
-          }
-        ),
+        ChangeNotifierProvider(create: (_) {
+          final playerProvider = PlayerProvider();
+          // 앱 시작 시 초기화 (플레이어 선택 다이얼로그를 위해)
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            playerProvider.initialize();
+          });
+          return playerProvider;
+        }),
         ChangeNotifierProvider(
           create: (_) {
             final quizFileProvider = QuizFileProvider();
-            
+
             // QuizService와 연결
             WidgetsBinding.instance.addPostFrameCallback((_) {
               QuizService().setQuizFileProvider(quizFileProvider);
             });
-            
+
             return quizFileProvider;
           },
         ),
       ],
       child: MaterialApp(
         title: '골든벨',
+        navigatorKey: navigatorKey, // 전역 NavigatorKey 설정
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
           useMaterial3: true,
@@ -129,9 +141,9 @@ class SplashScreen extends StatelessWidget {
               size: 100,
               color: Colors.white,
             ),
-            
+
             const SizedBox(height: 20),
-            
+
             // 앱 이름
             const Text(
               '골든벨',
@@ -141,16 +153,16 @@ class SplashScreen extends StatelessWidget {
                 color: Colors.white,
               ),
             ),
-            
+
             const SizedBox(height: 40),
-            
+
             // 로딩 인디케이터
             const CircularProgressIndicator(
               valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
             ),
-            
+
             const SizedBox(height: 20),
-            
+
             // 버전 정보
             const Text(
               '버전 1.0.0',

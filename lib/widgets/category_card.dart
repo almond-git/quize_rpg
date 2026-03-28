@@ -56,9 +56,10 @@ class CategoryCard extends StatelessWidget {
                   color: Colors.white.withAlpha(50),
                 ),
               ),
-              
+
               Padding(
-                padding: const EdgeInsets.all(16.0),
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 16.0, vertical: 22.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -67,16 +68,17 @@ class CategoryCard extends StatelessWidget {
                         Icon(
                           icon,
                           color: Colors.white,
-                          size: 24,
+                          size: 28,
                         ),
-                        const SizedBox(width: 8),
+                        const SizedBox(width: 10),
                         Expanded(
                           child: Text(
                             title,
                             style: const TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
-                              fontSize: 18,
+                              fontSize: 20,
+                              height: 1.2,
                             ),
                           ),
                         ),
@@ -88,19 +90,19 @@ class CategoryCard extends StatelessWidget {
                       ],
                     ),
                     if (subtitle != null) ...[
-                      const SizedBox(height: 8),
+                      const SizedBox(height: 12),
                       Text(
                         subtitle!,
                         style: TextStyle(
                           color: Colors.white.withAlpha(204), // 0.8 * 255
-                          fontSize: 14,
+                          fontSize: 15,
                         ),
                       ),
                     ],
                   ],
                 ),
               ),
-              
+
               // 잠금 오버레이
               if (isLocked)
                 Container(
@@ -119,4 +121,4 @@ class CategoryCard extends StatelessWidget {
       ),
     );
   }
-} 
+}

@@ -28,19 +28,20 @@ class QuizService {
   Future<void> loadQuizzes() async {
     // 이미 로드된 경우 다시 로드하지 않음 (강제 리로드 옵션 추가)
     if (_quizzes.isNotEmpty && _quizFileProvider == null) return;
-    
+
     try {
       _quizzes = [];
-      
+
       // 퀴즈 파일 프로바이더가 설정되어 있는 경우
       if (_quizFileProvider != null) {
         List<String> contents = _quizFileProvider!.getActiveQuizContents();
-        
+
         if (contents.isNotEmpty) {
           for (String content in contents) {
             try {
               final List<dynamic> quizList = json.decode(content);
-              final quizzes = quizList.map((json) => Quiz.fromJson(json)).toList();
+              final quizzes =
+                  quizList.map((json) => Quiz.fromJson(json)).toList();
               _quizzes.addAll(quizzes);
             } catch (e) {
               debugPrint('퀴즈 파일 파싱 오류: $e');
@@ -48,37 +49,58 @@ class QuizService {
           }
         }
       }
-      
-      // 퀴즈 파일 없거나 파싱 실패 시 기본 퀴즈 로드
+
+      // 퀴즈 파일 프로바이더가 없거나 퀴즈가 없는 경우 기본 파일에서 로드
       if (_quizzes.isEmpty) {
         try {
-          // assets 폴더에서 JSON 파일 로드
-          final String jsonData = await rootBundle.loadString('assets/data/quizzes.json');
-          final List<dynamic> quizList = json.decode(jsonData);
-          _quizzes = quizList.map((json) => Quiz.fromJson(json)).toList();
+          // 카테고리별 JSON 파일 로드
+          await _loadCategoryQuizzes('gugudan'); // 구구단 퀴즈
+          await _loadCategoryQuizzes('capital'); // 나라 수도 퀴즈
+          await _loadCategoryQuizzes('flag'); // 나라 국기 퀴즈
+
+          // 퀴즈가 여전히 비어있으면 기본 파일 로드
+          if (_quizzes.isEmpty) {
+            final String jsonData =
+                await rootBundle.loadString('assets/data/quizzes.json');
+            final List<dynamic> quizList = json.decode(jsonData);
+            _quizzes
+                .addAll(quizList.map((json) => Quiz.fromJson(json)).toList());
+          }
         } catch (e) {
           debugPrint('기본 퀴즈 데이터 로드 오류: $e');
           // 퀴즈 로드 실패 시 기본 더미 데이터 생성
           _generateDummyQuizzes();
         }
       }
-      
+
       // 퀴즈 ID 중복 처리
       _resolveQuizIdConflicts();
-      
     } catch (e) {
       debugPrint('퀴즈 데이터 로드 오류: $e');
       // 오류 발생 시 더미 데이터 생성
       _generateDummyQuizzes();
     }
   }
-  
+
+  // 카테고리별 퀴즈 파일 로드
+  Future<void> _loadCategoryQuizzes(String categoryFile) async {
+    try {
+      final String jsonData =
+          await rootBundle.loadString('assets/data/$categoryFile.json');
+      final List<dynamic> quizList = json.decode(jsonData);
+      final newQuizzes = quizList.map((json) => Quiz.fromJson(json)).toList();
+      _quizzes.addAll(newQuizzes);
+    } catch (e) {
+      debugPrint('$categoryFile 퀴즈 로드 오류: $e');
+    }
+  }
+
   // 퀴즈 ID 중복 해결 (여러 파일에서 로드 시 발생 가능)
   void _resolveQuizIdConflicts() {
     Map<int, int> idMap = {}; // 원래 ID -> 새 ID 매핑
     List<Quiz> uniqueQuizzes = [];
     int maxId = 0;
-    
+
     for (var quiz in _quizzes) {
       if (idMap.containsKey(quiz.id)) {
         // ID 중복인 경우 새 ID 할당
@@ -86,7 +108,7 @@ class QuizService {
           // 새 ID 생성
           maxId = maxId + 1;
           idMap[quiz.id] = maxId;
-          
+
           // 새 ID로 퀴즈 복제
           final newQuiz = Quiz(
             id: maxId,
@@ -107,7 +129,7 @@ class QuizService {
         maxId = maxId < quiz.id ? quiz.id : maxId;
       }
     }
-    
+
     _quizzes = uniqueQuizzes;
   }
 
@@ -174,36 +196,49 @@ class QuizService {
   }
 
   // 랜덤 퀴즈 가져오기
-  Future<Quiz> getRandomQuiz({
-    List<int>? excludeIds, 
+  Future<Quiz?> getRandomQuiz({
+    List<int>? excludeIds,
     String? category,
     int? difficulty,
     int playerId = 0,
   }) async {
     await loadQuizzes();
-    
+
     List<Quiz> filteredQuizzes = List.from(_quizzes);
-    
+
     // 제외할 ID 필터링
     if (excludeIds != null && excludeIds.isNotEmpty) {
-      filteredQuizzes = filteredQuizzes.where((q) => !excludeIds.contains(q.id)).toList();
+      filteredQuizzes =
+          filteredQuizzes.where((q) => !excludeIds.contains(q.id)).toList();
     }
-    
+
     // 카테고리 필터링
     if (category != null) {
-      filteredQuizzes = filteredQuizzes.where((q) => q.category == category).toList();
+      filteredQuizzes =
+          filteredQuizzes.where((q) => q.category == category).toList();
+
+      // 카테고리에 맞는 문제가 없으면 null 반환 (다른 카테고리에서 가져오지 않음)
+      if (filteredQuizzes.isEmpty) {
+        return null;
+      }
     }
-    
+
     // 난이도 필터링
     if (difficulty != null) {
-      filteredQuizzes = filteredQuizzes.where((q) => q.difficulty == difficulty).toList();
+      final difficultyFiltered =
+          filteredQuizzes.where((q) => q.difficulty == difficulty).toList();
+
+      // 난이도에 맞는 문제가 있을 경우에만 적용
+      if (difficultyFiltered.isNotEmpty) {
+        filteredQuizzes = difficultyFiltered;
+      }
     }
-    
+
     if (filteredQuizzes.isEmpty) {
-      // 필터링 결과가 없으면 전체 퀴즈에서 선택
-      filteredQuizzes = List.from(_quizzes);
+      // 필터링 결과가 없으면 null 반환
+      return null;
     }
-    
+
     // 플레이어의 틀린 문제 목록 가져오기
     List<int> wrongQuestionIds = [];
     if (playerId > 0 && !kIsWeb) {
@@ -213,7 +248,7 @@ class QuizService {
         debugPrint('틀린 문제 목록 가져오기 오류: $e');
       }
     }
-    
+
     // 가중치 부여: 틀린 문제는 선택될 확률을 높임
     List<Quiz> quizzesWithWeights = [];
     for (Quiz quiz in filteredQuizzes) {
@@ -226,10 +261,10 @@ class QuizService {
         quizzesWithWeights.add(quiz);
       }
     }
-    
+
     return quizzesWithWeights[_random.nextInt(quizzesWithWeights.length)];
   }
-  
+
   // 특정 ID의 퀴즈 가져오기
   Future<Quiz?> getQuizById(int id) async {
     await loadQuizzes();
@@ -239,17 +274,63 @@ class QuizService {
       return null;
     }
   }
-  
+
+  // 특정 카테고리에 속한 모든 퀴즈 ID 가져오기
+  Future<List<int>> getQuizIdsByCategory(String category) async {
+    await loadQuizzes();
+    return _quizzes
+        .where((quiz) => quiz.category == category)
+        .map((quiz) => quiz.id)
+        .toList();
+  }
+
+  // 하위 카테고리에 속한 모든 퀴즈 ID 가져오기
+  Future<List<int>> getQuizIdsBySubcategory(String subcategory) async {
+    await loadQuizzes();
+    return _quizzes
+        .where((quiz) => quiz.category == subcategory)
+        .map((quiz) => quiz.id)
+        .toList();
+  }
+
   // 카테고리 목록 가져오기
   Future<List<String>> getCategories() async {
     await loadQuizzes();
     Set<String> categories = _quizzes.map((quiz) => quiz.category).toSet();
     return categories.toList();
   }
-  
+
+  // 상위 카테고리 목록 가져오기
+  Future<List<String>> getParentCategories() async {
+    await loadQuizzes();
+    Set<String> parentCategories = {};
+
+    for (var quiz in _quizzes) {
+      if (quiz.parentCategory != null) {
+        parentCategories.add(quiz.parentCategory!);
+      }
+    }
+
+    return parentCategories.toList();
+  }
+
+  // 특정 상위 카테고리에 속한 하위 카테고리 목록 가져오기
+  Future<List<String>> getSubCategories(String parentCategory) async {
+    await loadQuizzes();
+    Set<String> subCategories = {};
+
+    for (var quiz in _quizzes) {
+      if (quiz.parentCategory == parentCategory) {
+        subCategories.add(quiz.category);
+      }
+    }
+
+    return subCategories.toList();
+  }
+
   // 퀴즈 개수 가져오기
   Future<int> getQuizCount() async {
     await loadQuizzes();
     return _quizzes.length;
   }
-} 
+}

@@ -1,77 +1,114 @@
 [
 	{
 		"id": 1,
-		"question": "미국 수도는?",
-		"options": [
-			"뉴욕",
-			"워싱턴",
-			"인천",
-			"대구"
-		],
-		"correctOptionIndex": 1,
-		"difficulty": 1,
-		"category": "일반상식",
-		"experienceReward": 10,
-		"experiencePenalty": 5
-	},
-	{
-		"id": 2,
-		"question": "2 + 2 = ?",
+		"question": "1 × 3 = ?",
 		"options": [
 			"1",
 			"2",
 			"3",
 			"4"
 		],
-		"correctOptionIndex": 3,
+		"correctOptionIndex": 2,
 		"difficulty": 1,
-		"category": "수학",
+		"category": "구구단 1단",
+		"parentCategory": "구구단",
+		"experienceReward": 10,
+		"experiencePenalty": 5
+	},
+	{
+		"id": 2,
+		"question": "2 × 3 = ?",
+		"options": [
+			"4",
+			"5",
+			"6",
+			"7"
+		],
+		"correctOptionIndex": 2,
+		"difficulty": 1,
+		"category": "구구단 2단",
+		"parentCategory": "구구단",
 		"experienceReward": 10,
 		"experiencePenalty": 5
 	},
 	{
 		"id": 3,
-		"question": "이산화탄소 화학식은?",
+		"question": "3 × 3 = ?",
 		"options": [
-			"CO2",
-			"H2O",
-			"O2",
-			"N2"
+			"6",
+			"9",
+			"12",
+			"15"
 		],
-		"correctOptionIndex": 0,
-		"difficulty": 2,
-		"category": "과학",
-		"experienceReward": 20,
-		"experiencePenalty": 10
+		"correctOptionIndex": 1,
+		"difficulty": 1,
+		"category": "구구단 3단",
+		"parentCategory": "구구단",
+		"experienceReward": 10,
+		"experiencePenalty": 5
 	},
 	{
 		"id": 4,
-		"question": "세계에서 가장 넓은 대륙은?",
+		"question": "4 × 4 = ?",
 		"options": [
-			"아시아",
-			"아프리카",
-			"유럽",
-			"남아메리카"
+			"8",
+			"12",
+			"16",
+			"20"
 		],
-		"correctOptionIndex": 0,
-		"difficulty": 2,
-		"category": "지리",
-		"experienceReward": 20,
-		"experiencePenalty": 10
+		"correctOptionIndex": 2,
+		"difficulty": 1,
+		"category": "구구단 4단",
+		"parentCategory": "구구단",
+		"experienceReward": 10,
+		"experiencePenalty": 5
 	},
 	{
 		"id": 5,
-		"question": "다음 중 프로그래밍 언어가 아닌 것은?",
+		"question": "5 × 5 = ?",
 		"options": [
-			"Java",
-			"Python",
-			"Candi",
-			"JavaScript"
+			"15",
+			"20",
+			"25",
+			"30"
 		],
 		"correctOptionIndex": 2,
-		"difficulty": 3,
-		"category": "프로그래밍",
-		"experienceReward": 30,
-		"experiencePenalty": 15
+		"difficulty": 1,
+		"category": "구구단 5단",
+		"parentCategory": "구구단",
+		"experienceReward": 10,
+		"experiencePenalty": 5
+	},
+	{
+		"id": 6,
+		"question": "영국의 수도는?",
+		"options": [
+			"런던",
+			"맨체스터",
+			"리버풀",
+			"에든버러"
+		],
+		"correctOptionIndex": 0,
+		"difficulty": 1,
+		"category": "나라 수도 맞히기",
+		"parentCategory": "나라 맞히기",
+		"experienceReward": 10,
+		"experiencePenalty": 5
+	},
+	{
+		"id": 7,
+		"question": "이 국기는 어느 나라의 국기인가요?",
+		"options": [
+			"일본",
+			"중국",
+			"한국",
+			"대만"
+		],
+		"correctOptionIndex": 0,
+		"difficulty": 1,
+		"category": "나라 국기 맞히기",
+		"parentCategory": "나라 맞히기",
+		"experienceReward": 10,
+		"experiencePenalty": 5
 	}
-]
+] 

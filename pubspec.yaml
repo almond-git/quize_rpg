@@ -98,6 +98,7 @@ flutter:
     - assets/images/items/
     - assets/images/achievements/
     - assets/images/quests/
+    - assets/images/flags/
     - assets/images/regions/
     - assets/images/ui/
     - assets/images/characters/

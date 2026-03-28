@@ -14,8 +14,10 @@ Quiz _$QuizFromJson(Map<String, dynamic> json) => Quiz(
       correctOptionIndex: (json['correctOptionIndex'] as num).toInt(),
       difficulty: (json['difficulty'] as num).toInt(),
       category: json['category'] as String,
+      parentCategory: json['parentCategory'] as String?,
       experienceReward: (json['experienceReward'] as num).toInt(),
       experiencePenalty: (json['experiencePenalty'] as num).toInt(),
+      imagePath: json['imagePath'] as String?,
     );
 
 Map<String, dynamic> _$QuizToJson(Quiz instance) => <String, dynamic>{
@@ -25,8 +27,10 @@ Map<String, dynamic> _$QuizToJson(Quiz instance) => <String, dynamic>{
       'correctOptionIndex': instance.correctOptionIndex,
       'difficulty': instance.difficulty,
       'category': instance.category,
+      'parentCategory': instance.parentCategory,
       'experienceReward': instance.experienceReward,
       'experiencePenalty': instance.experiencePenalty,
+      'imagePath': instance.imagePath,
     };
 
 QuizHistory _$QuizHistoryFromJson(Map<String, dynamic> json) => QuizHistory(
